@@ -1,0 +1,19 @@
+{
+  "name": "musicapi",
+  "version": "1.0.0",
+  "description": "Music Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PeterPTN/karaokeproject.git"
+  },
+  "author": "Peter Nguyen peter.p.t.nguyen@gmail.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PeterPTN/karaokeproject/issues"
+  },
+  "homepage": "https://github.com/PeterPTN/karaokeproject#readme"
+}
