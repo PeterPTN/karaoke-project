@@ -11,7 +11,7 @@ const useAuth = (code) => {
       
         // Result is within data object - Axios transform data to JSON automatically.
         // Promise based
-        axios.post("https://musicproject.adaptable.app/login", { code })
+        axios.post("https://e-oke.adaptable.app/login", { code })
             .then(({ data }) => {
                 //First arg specifies state, which, when accessed triggers popstate event, this can be accessed similarly like an event listener
                 setAccessToken(data.accessToken)
@@ -35,7 +35,7 @@ const useAuth = (code) => {
         // Create interval that calls server to provide new tokens
         const interval = setInterval(() => {
             //Post refreshToken: refreshToken to body
-            axios.post("https://musicproject.adaptable.app/refresh", { refreshToken })
+            axios.post("https://e-oke.adaptable.app/refresh", { refreshToken })
                 .then(({ data }) => {
                     //First arg specifies state, which, when accessed triggers popstate event, this can be accessed similarly like an event listener
                     setAccessToken(data.accessToken)

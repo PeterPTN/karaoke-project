@@ -4,7 +4,9 @@
   "description": "Music Project",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "react-scripts build",
+    "start":"serve -s build -l $PORT"
   },
   "repository": {
     "type": "git",
@@ -15,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/PeterPTN/karaokeproject/issues"
   },
-  "homepage": "https://github.com/PeterPTN/karaokeproject#readme"
+  "homepage": "https://github.com/PeterPTN/karaokeproject#readme",
+  "dependencies": {
+    "concurrently": "^7.4.0"
+  }
 }

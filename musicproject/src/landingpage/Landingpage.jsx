@@ -106,7 +106,7 @@ const Landingpage = ({ code }) => {
     useEffect(() => {
         if (isNaN(playFromList)) return
 
-        axios.get("https://musicproject.adaptable.app/lyrics", {
+        axios.get("https://e-oke.adaptable.app/lyrics", {
             params: {
                 track: lyricsDetails.track,
                 artist: lyricsDetails.artist
