@@ -1,0 +1,56 @@
+/* Global CSS styles */
+:root {
+  box-sizing: border-box;
+  font-size: 1rem;
+  --lightgrey: #EEEEEE;
+  --grey: rgb(37, 37, 37);
+  --darkblue: #1B262C;
+  --title: 'Reem Kufi Fun', sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
+  overflow: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--lightgrey);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-body);
+  text-decoration: none;
+  scroll-behavior: smooth;
+}
+
+.text-center {
+  text-align: center !important;
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Make an ellipses that truncates overflow for blog preview */
+.truncate {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Determine what sections need section__padding and section__margin */
+.section__padding {
+  padding: 5rem 12rem;
+}
+
+.section__margin {
+  margin: 5rem 12rem;
+}
