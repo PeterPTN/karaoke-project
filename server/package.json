@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "devStart": "nodemon server.js",
-    "start": "serve -s build -l $PORT"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",

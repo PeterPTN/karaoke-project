@@ -12,6 +12,9 @@ const lyricsFinder = require("lyrics-finder")
 const SpotifyWebApi = require('spotify-web-api-node');
 const app = express();
 
+// Serve static files along with API routes
+app.use(express.static('../musicproject/build'));
+
 //For cors issues
 app.use(cors());
 //Middleware that only parsers JSON()
