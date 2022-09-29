@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "react-scripts build",
-    "start":"serve -s build -l $PORT"
+    "build": "npm build --prefix musicproject",
+    "start":"npm start --prefix server"
   },
   "repository": {
     "type": "git",
