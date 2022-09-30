@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { TiTick } from 'react-icons/ti'
 import { ImCross } from 'react-icons/im'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const ShowTracksContainer = styled.div`
     display: flex;
