@@ -147,27 +147,27 @@ const Landingpage = ({ code }) => {
                     </div>
                 </NavVideoLyrics>
 
-
                 <SearchPlaylist
                     toggle
                     style={{
                         display: showSearch ? "" : "none",
-                        marginTop: toggle !== "Search" ? "7.5rem" : "3.9rem"
+                        marginTop: toggle !== "Search" ? "7.4rem" : "3.9rem"
                     }}>
                     <ToggleContainer>
                         <div>
-                            <button
+                        <button
                                 style={{
-                                    backgroundColor: toggle == "Playlist" ? "white" : "black",
-                                    color: toggle === "Playlist" ? "black" : "white"
+                                    background: toggle == "Playlist" ? "var(--purple)" : "white",
+                                    color: toggle === "Playlist" ? "white" : "var(--black)",
+
                                 }}
                                 onClick={handleClick}>Search
                             </button>
 
                             <button
                                 style={{
-                                    backgroundColor: toggle == "Playlist" ? "black" : "white",
-                                    color: toggle === "Playlist" ? "white" : "black"
+                                    background: toggle == "Playlist" ? "white" : "var(--purple)",
+                                    color: toggle === "Playlist" ? "var(--black)" : "white"
                                 }}
                                 onClick={handleClick}>Playlist
                             </button>
