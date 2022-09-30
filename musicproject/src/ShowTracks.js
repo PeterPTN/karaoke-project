@@ -101,6 +101,7 @@ export default function ShowResults({
 
     const [tickVisi, setTickVisi] = useState("0");
     const [crossVisi, setCrossVisi] = useState("0");
+    const [disableClick, setDisableClick] = useState("auto");
 
     function handleSearchClick() {
         if (playlist.indexOf(track.uri) === -1) {
