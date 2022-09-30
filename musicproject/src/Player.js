@@ -4,16 +4,16 @@ import { BsCircle } from 'react-icons/bs';
 import styled from 'styled-components';
 
 const PlayerContainer = styled.div`
-    position: relative;
-    padding-bottom: 5rem;
-    background-color: white;
+  position: relative;
     z-index: 110;
+    height: 10rem;
+    background-color: var(--black);
 
     .circle {
         position: absolute;
-        bottom: -.25rem;
+        bottom: 0rem;
+        font-size: 3rem;
         width: 3.5rem;
-        height: 13.5rem;
         right: .5rem;
         left: 0;
         margin: auto;
@@ -95,8 +95,14 @@ export default function ({ accessToken, toggle,
     return (
         <PlayerContainer>
             <SpotifyPlayer
-                styles={{ bgColor: "#eee" }}
-                magnifySliderOnHover={true}
+                  styles={{
+                    bgColor: "#1a1919",
+                    sliderTrackColor: "#ddd",
+                    sliderColor: "var(--purple)",
+                    color: "#eee",
+                    sliderHandleColor: "var(--purple)",
+                    trackNameColor: '#fff',
+                }}
                 token={accessToken}
                 callback={(state) => {
 

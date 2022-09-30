@@ -16,7 +16,7 @@ const Navigation = styled.nav`
         left: 0;
         top: 0;
         display: flex;
-        background-color: white;
+        background-color: var(--black);
         padding: .8rem .8rem;
 
         img {
@@ -31,8 +31,6 @@ const Navigation = styled.nav`
         text-shadow: -1px 0px 1rem var(--white);
         margin-left: 3rem;
     }
-
-    
 
     // Show/Hide Toggle
     svg {
@@ -49,7 +47,7 @@ const Navigation = styled.nav`
         color: whitesmoke;
     }
 
-    @media screen and (max-width: 1080px) {
+    @media screen and (max-width: 1300px) {
         position: absolute;
         width: 100%;
         padding: .25rem 2rem;

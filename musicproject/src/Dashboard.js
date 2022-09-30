@@ -4,11 +4,11 @@ const SearchContainer = styled.form`
     position: fixed;
     width: 400px;
     padding: .5rem 1rem 1.1rem;
-    background-color:var(--grey);
+    background-color:var(--playlistSearch);
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 3.9rem;
+    top: 3.7rem;
     right: 0;
     gap: .5rem;
 
@@ -21,9 +21,10 @@ const SearchContainer = styled.form`
         border: none;
     }
 
-    @media screen and (max-width: 1080px) {
+    @media screen and (max-width: 1300px) {
         width: 100%;
         z-index: 500;
+        top: 3.9rem;
     }
 `
 

@@ -2,9 +2,14 @@
 :root {
   box-sizing: border-box;
   font-size: 1rem;
-  --lightgrey: #EEEEEE;
-  --grey: rgb(37, 37, 37);
-  --darkblue: #1B262C;
+  --black: #1a1919;
+  --purple: #5f0f40;
+  --playlistSearch: #1a1919;
+  --toggle: #a0ac61;
+  --gradient1: linear-gradient(-45deg, #FCF8E8, #76549A, #DF7861);
+  --gradient2: linear-gradient(45deg, #669bbc, #003049, #fdf0d5);
+  --gradient3: linear-gradient(-90deg, #FCF8E8, #76549A, #DF7861, #94B49F);
+  --gradient4: linear-gradient(90deg, #FCF8E8, #76549A, #DF7861, #94B49F);
   --title: 'Reem Kufi Fun', sans-serif;
   font-family: Arial, Helvetica, sans-serif;
   overflow: hidden;
@@ -16,7 +21,12 @@
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--lightgrey);
+  background: #eee;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
 }
 
 *,
@@ -38,19 +48,10 @@
   display: none !important;
 }
 
-/* Make an ellipses that truncates overflow for blog preview */
+/* Make an ellipses that truncates overflow */
 .truncate {
   width: 250px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-/* Determine what sections need section__padding and section__margin */
-.section__padding {
-  padding: 5rem 12rem;
-}
-
-.section__margin {
-  margin: 5rem 12rem;
 }

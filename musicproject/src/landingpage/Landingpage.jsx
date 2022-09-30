@@ -27,6 +27,7 @@ const spotifyApi = new SpotifyWebApi({
 //Get portion of string after "?" inside URL - returns an object - .get(code) param 
 
 const Landingpage = ({ code }) => {
+    const [themeColor, setThemeColor] = useState(1);
     const [search, setSearch] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [showSearch, setShowSearch] = useState(true);
@@ -115,6 +116,11 @@ const Landingpage = ({ code }) => {
             setLyrics(res.data.lyrics)
         })
 
+        // ThemeColor
+        setThemeColor((val) => {
+            return val === 1 ? 2 : val === 2 ? 3 : 1;
+        })
+
     }, [lyricsDetails])
 
     //console.log(playlist);
@@ -139,7 +145,6 @@ const Landingpage = ({ code }) => {
                         <Lyrics>{lyrics}</Lyrics>
                         <p>&#169; 2022 <a href="https://pptn-web-dev.netlify.app/" target="_blank" rel="noopener noreferrer">Peter Nguyen</a></p>
                     </div>
-
                 </NavVideoLyrics>
 
 

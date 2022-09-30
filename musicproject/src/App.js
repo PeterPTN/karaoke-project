@@ -11,6 +11,7 @@ const Application = styled.div`
   margin: auto;
   display: flex;
   align-items: flex-start;
+  background-color: var(--black);
 `
 
 const code = new URLSearchParams(window.location.search).get('code');
