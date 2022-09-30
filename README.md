@@ -10,6 +10,6 @@ In the future it may include:
 - Dynamic rendering of "Official Music Video" using YouTube's API
 - Dynamic scrolling of lyrics for current song (currently unable to access Spotify's Playback Controller state values necessary to do so)
 
-Made possible with the generous help with Adaptable.io
+Made possible with the generous help from the people at Adaptable.io
 
 Check it out here: https://e-oke.adaptable.app/
