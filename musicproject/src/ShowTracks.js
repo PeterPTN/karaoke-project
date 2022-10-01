@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { TiTick } from 'react-icons/ti'
 import { ImCross } from 'react-icons/im'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 
 const ShowTracksContainer = styled.div`
     display: flex;
@@ -21,20 +22,24 @@ const ShowTracksContainer = styled.div`
         img {
             object-fit: cover;
             height: 5.5rem;
-            border-left: 2px solid white;
-            border-top: 2px solid white;
+            border-left: 2px solid var(--purple);
+            border-top: 2px solid var(--purple);
+            border-bottom: 2px solid var(--purple);
+            border-right: 2px solid var(--purple);
         }
 
         div { 
             flex-direction: column;
             padding: .25rem 0 0 .25rem;
 
-              // Track Title
+            // Track Title
             h2 {
                 font-size: 1.1rem;
                 text-transform: capitalize;
                 margin-bottom: .25rem;
-                color: #eee;
+                color: #ddd;
+                font-weight: lighter;
+
                 overflow:hidden;
                 line-height: 1.5rem;
                 max-height: 3rem;
@@ -46,12 +51,12 @@ const ShowTracksContainer = styled.div`
                 -webkit-line-clamp: 2;
             }
 
-              // Artist Name
+            // Artist Name
             h3 {
                 text-transform: capitalize;
-                font-size: 1rem;
+                font-size: .9rem;
                 font-weight: lighter;
-                color: #bbb;
+                color: #A15073;
             }
         }
     }
@@ -96,7 +101,6 @@ export default function ShowResults({
     playlistDesc, setPlaylistDesc,
     setPlayFromList,
     results, index,
-
 }) {
 
     const [tickVisi, setTickVisi] = useState("0");
@@ -144,8 +148,8 @@ export default function ShowResults({
     //console.log(track);
     return (
         <ShowTracksContainer>
-            {results
-                ? // Search
+            {results // Search
+                ?
                 <>
                     <div >
                         <img src={track.albumUrl} onClick={handleSearchClick} alt={track.title + " artwork"} />

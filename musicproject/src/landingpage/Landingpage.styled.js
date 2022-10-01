@@ -15,6 +15,93 @@ export const LandingWrapper = styled.div`
     }
 `
 
+export const ModalWrapper = styled.div`
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    background-color: black;
+    opacity: .75;
+    z-index: 1000;
+`
+
+export const Modal = styled.div`
+    background-color: white;
+    position: absolute;
+    height: 375px;
+    top: 5rem;
+    width: 800px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 1100;
+    padding: 1rem 3rem;
+    text-align: center;
+    font-size: 1rem;
+    border: 2px solid grey;
+    outline: 2px solid white;
+    border-radius: .25rem;
+
+    h1 {
+        margin-top: .5em;
+        margin-bottom: .5em;
+        font-weight: 400;
+    }
+
+    h2, h3 {
+        padding: 0 3rem;
+        font-size: 1em;
+        line-height: 1.35;
+        font-weight: 500;
+    }
+
+    h2 {
+        margin-bottom: 1.5rem;
+    }
+
+    h3 {
+        font-weight: 600;
+        padding: 0 7rem;
+    }
+
+    button {
+        font-size: 1rem;
+        border: none;
+        cursor: pointer;
+    }
+
+    button:first-child {
+        padding: .25em .5em;
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: .25em;
+        background-color: transparent;
+        font-size: 1.5em;
+    }
+
+    button:last-child {
+        position: absolute;
+        background: var(--purple);
+        color: white; 
+        right: 0; 
+        left: 0;
+        width: 3.5em;
+        margin: auto; 
+        bottom: 1rem;
+        padding: .5em;
+    }
+
+    a {
+        color: var(--purple);
+        text-decoration: underline;
+    }
+
+    @media screen and (max-width: 1300px) {
+        width: 300px;
+        font-size: .8rem;
+    }
+`
+
 export const LandingContent = styled.div`
     height: 100%;
     display: flex;
@@ -29,13 +116,14 @@ export const NavVideoLyrics = styled.div`
     flex-direction: column;
     background: ${props => {
         return props.themeColor === 1
-            ? "linear-gradient(-45deg, #FCF8E8, #C689C6, #DF7861)"
+            ? "linear-gradient(-45deg, #319DA0, #C689C6, #DF7861)"
             : props.themeColor == "2"
-                ? "linear-gradient(45deg, #7D6E83, #D0B8A8, #5F6F94)"
-                : "linear-gradient(45deg, #F96666, #A1C298, #0E49B5)"
+                ? "linear-gradient(45deg, #FFC18E, #876445, #AC7088)"
+                : "linear-gradient(-90deg, #F96666, #3FA796, #0E49B5)"
     }};
     background-size: 300% 300%;
-    animation: change infinite 20s linear;
+    animation: change infinite 60s linear;
+    
 
     @keyframes change {
         0% {
@@ -48,7 +136,6 @@ export const NavVideoLyrics = styled.div`
             background-position: 0% 50%;
         }
     }
-
 
     div:nth-child(2) {
         display: flex;
@@ -102,11 +189,9 @@ export const Lyrics = styled.p`
     font-size: 1.5em;
     top: 0%;
     width: 100%;
-    z-index: 100;
     text-align: center;
-    overflow-y: scroll;
     color: #eee;
-    text-shadow: 1px 1px 1rem black;
+    text-shadow: 1px 1px .5rem grey;
 
     ::-webkit-scrollbar-track {
         background: transparent;
@@ -129,8 +214,61 @@ export const Lyrics = styled.p`
     }
 `
 
-export const VideoLyrics = styled.div`
+export const Welcome = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 2rem;
+    font-size: 1rem;
 
+    div:nth-child(1) {
+        margin-top: 2rem;
+        font-family: var(--title);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 3.5em;
+        letter-spacing: 5px;
+        color: white;
+        text-shadow: 0 0 .5rem var(--purple);
+    }
+
+    button {
+        border: none;
+        padding: .5rem 1.25rem;
+        font-size: 1.35rem;
+        cursor: pointer;
+        box-shadow: 0 0 1rem var(--purple);
+        border-radius: 1rem;
+        background-color: var(--purple);
+        color: white;
+    }
+
+    @media screen and (min-width: 1930px) {
+        font-size: 1.25rem;
+        margin-top: 5rem;
+    }
+
+    @media screen and (max-width: 1300px) {
+        font-size: .7rem;
+
+        div:nth-child(1) {
+            margin-top: 10rem;
+        }
+    }
+
+    @media screen and (max-width: 725px) {
+        font-size: .45rem;
+    }
+
+    @media screen and (max-width: 425px) {
+        font-size: .3rem;
+        line-height: 2;
+
+        button {
+            font-size: .9rem;
+        }
+    }
 `
 
 // Search/Playlist Container
@@ -171,7 +309,7 @@ export const ToggleContainer = styled.div`
 
         // Toggle button
         button {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             cursor: pointer;
             position: relative;
             transition: all .15s;
@@ -187,7 +325,7 @@ export const ToggleContainer = styled.div`
 
         // Refresh Icon
         svg {
-            font-size: 1.5rem;
+            font-size: 1.35rem;
             animation: 3s linear spin infinite;
             position: absolute;
             right: -1.75rem;
@@ -214,10 +352,6 @@ export const SearchResultsContainer = styled.div`
     padding: .5rem;
     text-align: center;
     color: #eee;
-    font-size: 1.75rem;
+    font-size: 1rem;
 }
 `
-
-
-
-

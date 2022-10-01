@@ -1,26 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import SpotifyPlayer from 'react-spotify-web-playback';
 import { BsCircle } from 'react-icons/bs';
 import styled from 'styled-components';
 
 const PlayerContainer = styled.div`
-  position: relative;
+    position: relative;
     z-index: 110;
     height: 10rem;
     background-color: var(--black);
 
     .circle {
         position: absolute;
-        bottom: 0rem;
+        bottom: 6rem;
         font-size: 3rem;
         width: 3.5rem;
-        right: .5rem;
+        right: .4rem;
         left: 0;
         margin: auto;
         transition: all .25s;
-        z-index: 300;
         opacity: 1;
         visibility: visible;
+    }
+
+    ._ContentRSWP  {
+        margin-top: .75rem;
+    }
+    
+    @media screen and (max-width: 1300px) {
+        ._ContentRSWP  {
+            margin-top: .5rem;
+
+            svg {
+                font-size: 2rem;
+            }
+        }
     }
 `
 
@@ -34,7 +47,6 @@ export default function ({ accessToken, toggle,
 }) {
     //console.log(accessToken);
     //console.log(trackUri);
-
 
     const [visi, setVisi] = useState({
         opacity: "0",
@@ -71,12 +83,12 @@ export default function ({ accessToken, toggle,
             setVisi({
                 opacity: "1",
                 color: "red",
-                zIndex: "300"
+                zIndex: "2500"
             })
             setTimeout(() => setVisi({
                 opacity: "0",
                 zIndex: "-130"
-            }), 700)
+            }), 600)
         }
         // Render when index is given, or when playing is off/on
     }, [playFromList, isPlaying])
@@ -95,11 +107,11 @@ export default function ({ accessToken, toggle,
     return (
         <PlayerContainer>
             <SpotifyPlayer
-                  styles={{
+                styles={{
                     bgColor: "#1a1919",
                     sliderTrackColor: "#ddd",
                     sliderColor: "var(--purple)",
-                    color: "#eee",
+                    color: "#424242 ",
                     sliderHandleColor: "var(--purple)",
                     trackNameColor: '#fff',
                 }}

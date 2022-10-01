@@ -8,13 +8,13 @@ const SearchContainer = styled.form`
     display: flex;
     justify-content: center;
     align-items: center;
-    top: 3.7rem;
+    top: 3.9rem;
     right: 0;
     gap: .5rem;
 
     input {
         outline: none;
-        font-size: 1.1rem;
+        font-size: 1rem;
         padding: .35rem .75rem;
         width: 75%;
         border-radius: 1rem;
@@ -24,7 +24,6 @@ const SearchContainer = styled.form`
     @media screen and (max-width: 1300px) {
         width: 100%;
         z-index: 500;
-        top: 3.9rem;
     }
 `
 

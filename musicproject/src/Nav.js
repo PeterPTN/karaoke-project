@@ -12,32 +12,28 @@ const Navigation = styled.nav`
     font-family: var(--title);
 
     .spotify {
-        position: absolute;
-        left: 0;
-        top: 0;
         display: flex;
-        background-color: var(--black);
-        padding: .8rem .8rem;
+        column-gap: .5rem;
 
         img {
-            margin: 0;
+            margin-top: .5rem;
             width: 2.5rem;
             height: 2.5rem;
         }
+
+        a {
+            color: #eee;
+            text-shadow: -1px 0px 1rem var(--white);
+        }
     }
 
-    a {
-        color: #eee;
-        text-shadow: -1px 0px 1rem var(--white);
-        margin-left: 3rem;
-    }
-
+ 
     // Show/Hide Toggle
     svg {
         cursor: pointer;
         right: 1rem;
         color: white;
-        background-color: var(--grey);
+        background-color: var(--purple);
         border-radius: 2rem;
         transition: all 0.2s;
         z-index: 600;
@@ -51,6 +47,11 @@ const Navigation = styled.nav`
         position: absolute;
         width: 100%;
         padding: .25rem 2rem;
+
+        svg {
+            font-size: 2rem;
+            margin-bottom: .5rem;
+        }
     }
 
     @media screen and (max-width: 400px) {
@@ -67,8 +68,11 @@ export default function Nav({ showSearch, setShowSearch }) {
 
     return (
         <Navigation>
-            <div className='spotify'><img src={Pic} alt="Spotify Logo"/></div>
-            <a href="/">E-Ōke</a>
+            <div className='spotify'>
+                <img src={Pic} alt="Spotify Logo" />
+                <a href="/">E-Ōke</a>
+            </div>
+
             <MdArrowForwardIos
                 onClick={() => { setShowSearch(!showSearch); handleClick() }}
                 style={{ transform: `rotate(${rotation})` }} />

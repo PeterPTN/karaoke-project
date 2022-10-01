@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import SpotifyWebApi from 'spotify-web-api-node';
-
 import ShowTracks from '../ShowTracks';
 import Nav from '../Nav';
 import Dashboard from '../Dashboard';
 import Player from '../Player';
 import useAuth from '../useAuth';
-
+import { gsap } from 'gsap';
 import { FiRefreshCcw } from 'react-icons/fi'
 
 import {
@@ -28,7 +27,8 @@ const spotifyApi = new SpotifyWebApi({
 
 const Landingpage = ({ code }) => {
     const [themeColor, setThemeColor] = useState(1);
-    const [search, setSearch] = useState("");
+    const [modalView, setModalView] = useState("none");
+    const [search, setSearch] = useState("b");
     const [searchResults, setSearchResults] = useState([]);
     const [showSearch, setShowSearch] = useState(true);
     const [toggle, setToggle] = useState("Playlist");
@@ -45,12 +45,20 @@ const Landingpage = ({ code }) => {
         artist: "",
     });
 
+    const karaoke1 = useRef();
+    const karaoke2 = useRef();
+    const karaoke3 = useRef();
+
     function handleChange(event) {
         setSearch(event.target.value)
     }
 
     function handleClick(e) {
         e.target.innerHTML === "Playlist" ? setToggle("Search") : setToggle("Playlist");
+    }
+
+    function toggleModal() {
+        setModalView(val => val == "none" ? "block" : "none");
     }
 
     //console.log("Code", code);
@@ -123,6 +131,12 @@ const Landingpage = ({ code }) => {
 
     }, [lyricsDetails])
 
+    useEffect(() => {
+        gsap.to(karaoke1.current, { opacity: 1, delay: 0, duration: 1.05 });
+        gsap.to(karaoke2.current, { opacity: 1, delay: .4, duration: 1.05 });
+        gsap.to(karaoke3.current, { opacity: 1, delay: .8, duration: 1.05 });
+    }, [])
+
     //console.log(playlist);
     //console.log(playFromList)
     //console.log(playlistDesc)
@@ -136,118 +150,143 @@ const Landingpage = ({ code }) => {
     //console.log(songProgress);
 
     return (
-        <LandingWrapper>
-            <LandingContent>
-                <NavVideoLyrics>
-                    <Nav showSearch={showSearch} setShowSearch={setShowSearch} />
+        <>
+            <ModalWrapper style={{ display: modalView }} />
+            <Modal style={{ display: modalView }}>
+                <button onClick={toggleModal}>X</button>
+                <h1>Welcome!</h1>
+                <h2>E-Ōke is a karaoke web app that uses your Spotify Premium Account to search and save songs. Playing them displays lyrics -- most of the time. &#128517;</h2>
+                <h2>Use the searchbar to find your favourite tracks. You can save these songs to your playlist by clicking on them. Once you've toggled over to playlist, simply click the track you want to play!</h2>
+                <h3>Contact <a>Peter</a> and include your e-mail used for Spotify Premium to request authorisation for full functionality.</h3>
+                <button onClick={toggleModal}>Okay</button>
+            </Modal>
 
-                    <div>
-                        <Lyrics>{lyrics}</Lyrics>
-                        <p>&#169; 2022 <a href="https://pptn-web-dev.netlify.app/" target="_blank" rel="noopener noreferrer">Peter Nguyen</a></p>
-                    </div>
-                </NavVideoLyrics>
-
-                <SearchPlaylist
-                    toggle
-                    style={{
-                        display: showSearch ? "" : "none",
-                        marginTop: toggle !== "Search" ? "7.4rem" : "3.9rem"
-                    }}>
-                    <ToggleContainer>
+            <LandingWrapper>
+                <LandingContent>
+                    <NavVideoLyrics themeColor={themeColor}>
+                        <Nav showSearch={showSearch} setShowSearch={setShowSearch} />
                         <div>
-                        <button
-                                style={{
-                                    background: toggle == "Playlist" ? "var(--purple)" : "white",
-                                    color: toggle === "Playlist" ? "white" : "var(--black)",
+                            {lyrics.length > 0
+                                ?
+                                <Lyrics>
+                                    {lyrics}
+                                </Lyrics>
+                                :
+                                <Welcome>
+                                    <div>
+                                        <h1 ref={karaoke1} style={{ opacity: "0" }} >Karaoke</h1>
+                                        <h1 ref={karaoke2} style={{ opacity: "0" }} >&#127881; カラオケ &#127908;</h1>
+                                        <h1 ref={karaoke3} style={{ opacity: "0" }} >E-Ōkesutora</h1>
+                                    </div>
 
-                                }}
-                                onClick={handleClick}>Search
-                            </button>
-
-                            <button
-                                style={{
-                                    background: toggle == "Playlist" ? "white" : "var(--purple)",
-                                    color: toggle === "Playlist" ? "var(--black)" : "white"
-                                }}
-                                onClick={handleClick}>Playlist
-                            </button>
-
-                            <FiRefreshCcw style={{ display: displayRefresh }} />
+                                    <button onClick={toggleModal}>Get Started</button>
+                                </Welcome>
+                            }
+                            <p>&#169; 2022 <a href="https://pptn-web-dev.netlify.app/" target="_blank" rel="noopener noreferrer">Peter Nguyen</a></p>
                         </div>
-                    </ToggleContainer>
+                    </NavVideoLyrics>
 
-                    {toggle !== "Search"
-                        ?
-                        <>
-                            <Dashboard
-                                code={code}
-                                toggle={toggle}
-                                handleChange={handleChange}
-                                handleClick={handleClick}
-                            />
+                    <SearchPlaylist
+                        toggle
+                        style={{
+                            display: showSearch ? "" : "none",
+                            marginTop: toggle !== "Search" ? "7.3rem" : "3.9rem"
+                        }}>
+                        <ToggleContainer>
+                            <div>
+                                <button
+                                    style={{
+                                        background: toggle == "Playlist" ? "var(--purple)" : "white",
+                                        color: toggle === "Playlist" ? "white" : "var(--black)",
 
-                            <SearchResultsContainer>
-                                {searchResults.map((track) => {
+                                    }}
+                                    onClick={handleClick}>Search
+                                </button>
 
-                                    //console.log(track)
-                                    // RENAME TRACKRESULTS
-                                    return <ShowTracks
-                                        track={track}
-                                        key={track.uri}
-                                        playlist={playlist}
-                                        setPlaylist={setPlaylist}
-                                        playlistDesc={playlistDesc}
-                                        setPlaylistDesc={setPlaylistDesc}
-                                        results
-                                    />
-                                })}
-                            </SearchResultsContainer>
-                        </>
-                        :
-                        <>
-                            <SearchResultsContainer>
-                                {playlistDesc.length > 0
-                                    ? playlistDesc.map((track, index) => {
+                                <button
+                                    style={{
+                                        background: toggle == "Playlist" ? "white" : "var(--purple)",
+                                        color: toggle === "Playlist" ? "var(--black)" : "white"
+                                    }}
+                                    onClick={handleClick}>Playlist
+                                </button>
+
+                                <FiRefreshCcw style={{ display: displayRefresh }} />
+                            </div>
+                        </ToggleContainer>
+
+                        {toggle !== "Search"
+                            ?
+                            <>
+                                <Dashboard
+                                    code={code}
+                                    toggle={toggle}
+                                    handleChange={handleChange}
+                                    handleClick={handleClick}
+                                />
+
+                                <SearchResultsContainer>
+                                    {searchResults.map((track) => {
+
+                                        //console.log(track)
+                                        // RENAME TRACKRESULTS
                                         return <ShowTracks
-                                            index={index}
-                                            key={track.title + index}
                                             track={track}
-                                            toggle={toggle}
-                                            setIsPlaying={setIsPlaying}
-                                            playlistDesc={playlistDesc}
-                                            setPlaylistDesc={setPlaylistDesc}
+                                            key={track.uri}
                                             playlist={playlist}
                                             setPlaylist={setPlaylist}
-                                            setPlayFromList={setPlayFromList}
-                                            results={false}
+                                            playlistDesc={playlistDesc}
+                                            setPlaylistDesc={setPlaylistDesc}
+                                            results
                                         />
-                                    })
-                                    : <h1>Nothing saved!</h1>
-                                }
-                            </SearchResultsContainer>
-                        </>
-                    }
+                                    })}
+                                </SearchResultsContainer>
+                            </>
+                            :
+                            <>
+                                <SearchResultsContainer>
+                                    {playlistDesc.length > 0
+                                        ? playlistDesc.map((track, index) => {
+                                            return <ShowTracks
+                                                index={index}
+                                                key={track.title + index}
+                                                track={track}
+                                                toggle={toggle}
+                                                setIsPlaying={setIsPlaying}
+                                                playlistDesc={playlistDesc}
+                                                setPlaylistDesc={setPlaylistDesc}
+                                                playlist={playlist}
+                                                setPlaylist={setPlaylist}
+                                                setPlayFromList={setPlayFromList}
+                                                results={false}
+                                            />
+                                        })
+                                        : <h1>Nothing saved!</h1>
+                                    }
+                                </SearchResultsContainer>
+                            </>
+                        }
 
-                </SearchPlaylist>
+                    </SearchPlaylist>
+                </LandingContent>
 
-            </LandingContent>
-
-            <Player
-                setDisplayRefresh={setDisplayRefresh}
-                setIsPlaying={setIsPlaying}
-                isPlaying={isPlaying}
-                accessToken={accessToken}
-                playlist={playlist}
-                playFromList={playFromList}
-                toggle={toggle}
-                playAt={playAt}
-                setPlayAt={setPlayAt}
-                lyricsDetails={lyricsDetails}
-                setLyricsDetails={setLyricsDetails}
-                setList={setList}
-                list={list}
-            />
-        </LandingWrapper >
+                <Player
+                    setDisplayRefresh={setDisplayRefresh}
+                    setIsPlaying={setIsPlaying}
+                    isPlaying={isPlaying}
+                    accessToken={accessToken}
+                    playlist={playlist}
+                    playFromList={playFromList}
+                    toggle={toggle}
+                    playAt={playAt}
+                    setPlayAt={setPlayAt}
+                    lyricsDetails={lyricsDetails}
+                    setLyricsDetails={setLyricsDetails}
+                    setList={setList}
+                    list={list}
+                />
+            </LandingWrapper >
+        </>
     )
 }
 
