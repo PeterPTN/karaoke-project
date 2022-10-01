@@ -10,12 +10,13 @@ import { FiRefreshCcw } from 'react-icons/fi'
 
 import {
     LandingWrapper,
+    ModalWrapper,
     LandingContent,
     SearchResultsContainer,
     NavVideoLyrics,
     SearchPlaylist,
     ToggleContainer,
-    Lyrics
+    Lyrics, Welcome, Modal
 } from './Landingpage.styled';
 import axios from 'axios';
 
