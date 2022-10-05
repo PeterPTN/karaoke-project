@@ -158,7 +158,7 @@ const Landingpage = ({ code }) => {
                 <h1>Welcome!</h1>
                 <h2>E-Ōke is a karaoke web app that uses your Spotify Premium Account to search and save songs. Playing them displays lyrics -- most of the time. &#128517;</h2>
                 <h2>Use the searchbar to find your favourite tracks. You can save these songs to your playlist by clicking on them. Once you've toggled over to playlist, simply click the track you want to play!</h2>
-                <h3>Contact <a>Peter</a> and include your e-mail used for Spotify Premium to request authorisation for full functionality.</h3>
+                <h3>Contact <a href="mailto:peter.p.t.nguyen@gmail.com">Peter</a> and include your e-mail used for Spotify Premium to request authorisation for full functionality.</h3>
                 <button onClick={toggleModal}>Okay</button>
             </Modal>
 
