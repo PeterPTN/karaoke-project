@@ -22,10 +22,6 @@ const ShowTracksContainer = styled.div`
         img {
             object-fit: cover;
             height: 5.5rem;
-            border-left: 2px solid var(--purple);
-            border-top: 2px solid var(--purple);
-            border-bottom: 2px solid var(--purple);
-            border-right: 2px solid var(--purple);
         }
 
         div { 

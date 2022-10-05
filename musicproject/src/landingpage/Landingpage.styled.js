@@ -192,6 +192,7 @@ export const Lyrics = styled.p`
     text-align: center;
     color: #eee;
     text-shadow: 1px 1px .5rem grey;
+    padding-bottom: 2.5rem;
 
     ::-webkit-scrollbar-track {
         background: transparent;
@@ -300,7 +301,7 @@ export const ToggleContainer = styled.div`
     width: 400px;
     outline: none;
     // Hack way to fill gap between search and toggle containers
-    border: 1px solid var(--black);
+    border: 2px solid var(--black);
 
     div {
         background-color: white;
@@ -309,7 +310,7 @@ export const ToggleContainer = styled.div`
 
         // Toggle button
         button {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             cursor: pointer;
             position: relative;
             transition: all .15s;
