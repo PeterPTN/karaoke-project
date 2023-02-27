@@ -183,7 +183,7 @@ const Landingpage = ({ code }) => {
                                     <button onClick={toggleModal}>Get Started</button>
                                 </Welcome>
                             }
-                            <p>&#169; 2022 <a href="https://pptn-web-dev.netlify.app/" target="_blank" rel="noopener noreferrer">Peter Nguyen</a></p>
+                            <p>&#169; 2022 <a href="https://pptn-portfolio.netlify.app" target="_blank" rel="noopener noreferrer">Peter Nguyen</a></p>
                         </div>
                     </NavVideoLyrics>
 
